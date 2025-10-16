@@ -12,6 +12,10 @@ Existem dois tipos:
 ![exemplo-lista-encadeada simples](image.png)
 ![exemplo-duplamente-encadeada](image-1.png)
 
+## Resume
+
+<img src="https://github.com/ingrydf12/data-structures/blob/master/listas/exercices/visualizer.png?raw=true">
+
 ## Conceitos importantes
 O primeiro nó é chamado de cabeça (HEAD) e o último é chamado de cauda (TAIL)
 - O ponteiro anterior do head é nulo assim como o próximo ponteiro do tail.
