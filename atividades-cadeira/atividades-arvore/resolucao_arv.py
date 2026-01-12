@@ -139,6 +139,18 @@ class Gerenciador:
             return findById;
         
         return self._buscar_por_id(root.right, id);
+        
+    def mostrar_traversias():
+        resultados = robos.traversal(in_order=True, pre_order=True, post_order=True)
+        print("-----em ordem-----")
+        for node in resultados[0]:
+            print(node)
+        print("-----pre-ordem-----")
+        for node in resultados[1]:
+                print(node)
+        print("-----pos-ordem-----")
+        for node in resultados[2]:
+                print(node)
             
     # Usa quando a árvore está pesada pra direita (NEGATIVO)
     # O node é o nó desbalanceado -> Pra direita
@@ -195,3 +207,33 @@ class Gerenciador:
     # Balanceamento da árvore é sempre ESQ - DIREITA > | 1 |
     def get_balance(self, root):
         return self.get_height(root.left) - self.get_height(root.right)
+    
+def menu():
+    while True:
+        opcoes = {
+            1: ("1 - Inserir um novo robô", gerenciador.insert(codigo = int(input("insira o codigo do robo: ")), nome = input("insira o nome do robo: "))),
+            2: ("2 - Buscar robô por nome", gerenciador.buscar_por_nome(nome = input("informe o nome do robo a ser pesquisado: "))),
+            3: ("3 - Buscar robô por ID", gerenciador.buscar_por_id(codigo = int(input("informe o código do robo a ser pesquisado: ")))), 
+            4: ("4 - Remover um robô", gerenciador.remover(codigo = input(input("informe o codigo do robo a ser removido: ")))),
+            5: ("5 - Mostrar árvore de robôs", gerenciador.mostrar_traversias())
+        }
+    
+    print("Gerencie seus robôs online!")
+    for item in opcoes.keys():
+            print(f'{item} - {opcoes[item][0]}')
+    
+    while True:
+        try:
+            resposta = int(input("Escolha: ").strip())
+            if resposta in opcoes:
+                break
+            print("Escolha inválida")
+        except:
+            print("Escolha inválida. Tente novamente.")
+    
+    callback = opcoes[resposta][1]
+    callback()
+
+if __name__ == "__main__":
+    gerenciador = Gerenciador()
+    menu()
