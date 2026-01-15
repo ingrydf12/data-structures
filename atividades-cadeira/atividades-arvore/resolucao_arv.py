@@ -140,17 +140,36 @@ class Gerenciador:
         
         return self._buscar_por_id(root.right, id);
         
-    def mostrar_traversias():
-        resultados = robos.traversal(in_order=True, pre_order=True, post_order=True)
-        print("-----em ordem-----")
-        for node in resultados[0]:
-            print(node)
-        print("-----pre-ordem-----")
-        for node in resultados[1]:
-                print(node)
-        print("-----pos-ordem-----")
-        for node in resultados[2]:
-                print(node)
+def mostrar_travessias(self):
+        print("----- Em ordem -----")
+        self.in_order(self.root)
+        
+        print("\n----- Pré-ordem -----")
+        self.pre_order(self.root)
+        
+        print("\n----- Pós-ordem -----")
+        self.post_order(self.root)
+
+    # Percurso pré-ordem: raiz → esquerda → direita
+    def pre_order(self, node):
+        if node:
+            print(f"{node}", end="\n")
+            self.pre_order(node.left)
+            self.pre_order(node.right)
+
+    # Percurso em-ordem: esquerda → raiz → direita
+    def in_order(self, node):
+        if node:
+            self.in_order(node.left)
+            print(f"{node}", end="\n")
+            self.in_order(node.right)
+
+    # Percurso pós-ordem: esquerda → direita → raiz
+    def post_order(self, node):
+        if node:
+            self.post_order(node.left)
+            self.post_order(node.right)
+            print(f"{node}", end="\n")
             
     # Usa quando a árvore está pesada pra direita (NEGATIVO)
     # O node é o nó desbalanceado -> Pra direita
